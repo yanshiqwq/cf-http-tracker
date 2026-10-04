@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "cf-http-tracker",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-15",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "ANNOUNCE_INTERVAL": "1800",
+    "MIN_ANNOUNCE_INTERVAL": "900",
+    "DEFAULT_NUMWANT": "50",
+    "MAX_NUMWANT": "100",
+    "PEER_TIMEOUT_SEC": "2700",
+    "MAX_PEERS_PER_SWARM": "2000",
+    "RATE_LIMIT_PER_MINUTE": "240",
+    "SCRAPE_ENABLED": "true",
+    "STATS_PUBLIC": "true",
+    // "private" locks announce/scrape behind a passkey; supply the keys below
+    // via `wrangler secret put AUTH_TOKENS` rather than keeping them in vars.
+    "TRACKER_MODE": "public"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "SWARM",
+        "class_name": "TorrentSwarm"
+      },
+      {
+        "name": "STATS",
+        "class_name": "TrackerStats"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "TorrentSwarm",
+        "TrackerStats"
+      ]
+    }
+  ]
+}

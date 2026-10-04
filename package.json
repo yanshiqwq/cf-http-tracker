@@ -1,0 +1,44 @@
+{
+  "name": "cf-http-tracker",
+  "version": "1.0.0",
+  "description": "A zero-dependency BitTorrent HTTP(S) tracker running on Cloudflare Workers + Durable Objects. BEP 3/7/23/48, compact peers, IPv6 peers6, scrape — no D1/KV/R2 required.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "yanshiqwq",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanshiqwq/cf-http-tracker.git"
+  },
+  "keywords": [
+    "bittorrent",
+    "tracker",
+    "cloudflare",
+    "workers",
+    "durable-objects",
+    "http-tracker",
+    "bep23",
+    "bep7"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vite build && wrangler deploy",
+    "cf-typegen": "wrangler types"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.62.5",
+    "@cloudflare/workers-types": "^5.20261003.1",
+    "typescript": "^7.0.2",
+    "undici": "^8.11.2",
+    "vite": "^8.3.2",
+    "vitest": "^5.0.3",
+    "wrangler": "^4.147.0"
+  }
+}
